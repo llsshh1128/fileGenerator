@@ -67,6 +67,37 @@ namespace blogFileGenerator
 				string javaTxt = "public class Solution { \n\tpublic " + rtType + " " + filename + "(" + inputVar + ") {" + "\n\n\t}\n}";
 
 				System.IO.File.WriteAllText(@"/Users/yummyelaine/ucsc/ams209/webpage/lc/fb/code/" + filename + ".java", javaTxt);
+
+				var alert = new NSAlert()
+				{
+					AlertStyle = NSAlertStyle.Critical,
+					MessageText = "Minions",
+					InformativeText = "Successfully created " + filename + " !",
+
+				};
+
+				alert.AddButton("OK");
+				alert.AddButton("Open folder");
+
+				var result = alert.RunModal();
+
+
+				if (result == 1001)
+				{
+					System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+					{
+						FileName = "/Users/yummyelaine/ucsc/ams209/webpage/lc/fb/",
+						UseShellExecute = true,
+						Verb = "open"
+					});
+				}
+
+
+				fileNameInput.StringValue = "";
+				fullNameInput.StringValue = "";
+				indexInput.StringValue = "";
+				returnTypeInput.StringValue = "";
+				inputInput.StringValue = "";
 			};
 		}
 
